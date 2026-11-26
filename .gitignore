@@ -1,0 +1,5 @@
+# Engram (memoria local del agente)
+.engram/
+
+# Volcados de crash de Git Bash
+*.stackdump

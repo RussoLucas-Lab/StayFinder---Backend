@@ -1,0 +1,39 @@
+schema: spec-driven
+
+context: |
+  Proyecto: StayFinder backend, API REST de reservas de alojamientos (estilo Booking).
+  Stack: Python 3.12+, FastAPI, Pydantic v2, SQLAlchemy 2.x, Alembic, PostgreSQL, Redis, Celery, pytest.
+  Arquitectura: monolito modular, un módulo por dominio en app/modules/<modulo>
+  (router, schemas, models, service, repository). Ver docs/architecture.md.
+  Contexto completo: docs/README.md (visión, dominio, convenciones, ADRs).
+  Orden de los changes: docs/change-map.md.
+
+  Reglas no negociables:
+  - PostgreSQL es la fuente de verdad de inventario y reservas; Redis nunca garantiza disponibilidad.
+  - Retener inventario y crear el hold ocurren en la misma transacción.
+  - Nunca float para dinero (docs/adr/0005).
+  - Los pagos se confirman solo con webhook verificado o consulta al proveedor.
+  - Autorización por recurso en cada operación.
+  - El estado de una reserva cambia solo por transiciones válidas ejecutadas por el backend.
+
+  Idioma: artefactos en español; la estructura de OpenSpec (encabezados, Requirement,
+  Scenario, SHALL/MUST, GIVEN/WHEN/THEN) va en inglés y exacta.
+
+rules:
+  proposal:
+    - Referenciar la fila del change map y los ADRs que aplican.
+    - Si depende de un ADR en estado Propuesto, listarlo en Impact como bloqueante.
+    - Declarar explícitamente qué queda fuera del change.
+  specs:
+    - Requisitos en español con SHALL o MUST en inglés (por ejemplo, "El sistema SHALL ...").
+    - Cada requisito tiene al menos un escenario feliz y uno de error o de borde.
+    - Si el requisito toca inventario, pagos, webhooks o datos de otro usuario, incluir escenarios de concurrencia, duplicados o permisos según corresponda.
+    - No describir implementación (tablas, clases, librerías); eso va en design.md.
+  design:
+    - Explicitar límites de transacción y estrategia de bloqueo cuando se escriben inventario, reservas o pagos.
+    - Listar las migraciones de Alembic necesarias.
+    - Si aparece una decisión transversal, proponer un ADR en lugar de decidirla dentro del change.
+  tasks:
+    - Los tests van en el mismo grupo que el código que prueban.
+    - Indicar qué test cubre cada escenario de las specs.
+    - Incluir una tarea de actualizar docs/ si el change altera dominio, arquitectura o convenciones.
