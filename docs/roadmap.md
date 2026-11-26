@@ -68,7 +68,7 @@ El plan inicial tiene estas tensiones; el change map debe tomar una posición ex
 
 Reglas para armarlo:
 
-- El primer change es chico y valida el flujo completo (OpenSpec, Engram, tests, Docker): esqueleto de la API con `/health` y `/ready`.
+- El primer change es chico y valida el flujo completo (OpenSpec, Engram, tests, Docker): esqueleto de la API con `/health`. `/ready` llega en el segundo change, junto con la base de datos, que es lo primero que tiene para verificar.
 - Cada change entrega algo verificable con tests; nada de changes que solo crean modelos sin comportamiento.
 - Un change no debería tocar más de dos o tres módulos.
 - Los changes críticos (holds, pagos, webhooks) son changes propios, no partes de uno más grande.

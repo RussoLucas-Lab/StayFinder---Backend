@@ -25,6 +25,17 @@
 
 El modo de acceso a la base (async o sync) lo fija [ADR-0009](adr/0009-acceso-async-a-base-de-datos.md) (propuesto).
 
+## Servicios de Compose
+
+Todo corre en contenedores ([ADR-0010](adr/0010-ejecucion-en-contenedores.md)).
+
+| Versión | Servicios |
+|---|---|
+| 1 | `api` (FastAPI), `db` (PostgreSQL), `hold-sweeper` (corre `expire-holds` periódicamente; cada minuto por defecto, configurable) |
+| 2 | Se suman `redis`, `worker` y `beat` (Celery). `beat` reemplaza a `hold-sweeper` e invoca el mismo servicio de expiración. |
+
+Los tests de integración usan una base PostgreSQL de Compose separada de la de desarrollo.
+
 ## Módulos
 
 | Módulo | Responsabilidad |

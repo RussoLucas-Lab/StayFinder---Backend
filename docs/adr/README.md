@@ -13,6 +13,8 @@ Cada ADR registra una decisión transversal: el contexto, la decisión, las alte
 
 Un ADR aceptado no se edita para cambiar la decisión: se escribe uno nuevo que lo reemplaza y se actualiza el estado del anterior.
 
+Un ADR aceptado sí admite aclaraciones que no cambian la decisión (sacar un detalle de implementación, corregir una referencia). Cada aclaración se registra con una nota fechada en una sección `## Notas` al final del ADR.
+
 ## Índice
 
 | # | Decisión | Estado |
