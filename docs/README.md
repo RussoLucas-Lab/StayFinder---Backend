@@ -12,7 +12,7 @@ Esta carpeta guarda el **porqué** del proyecto: visión, dominio, arquitectura,
 | [conventions.md](conventions.md) | Código, API, base de datos, testing, git, seguridad | Antes de escribir código |
 | [workflow.md](workflow.md) | Setup de herramientas, ciclo SDD con OpenSpec, uso de Engram | Al empezar a trabajar o al dudar del proceso |
 | [roadmap.md](roadmap.md) | Versiones 1 a 4 y formato del change map | Para planificar changes |
-| `change-map.md` | Ruta ordenada de changes. Todavía no existe: se genera a partir de [roadmap.md](roadmap.md#formato-del-change-map) | Para elegir el próximo change |
+| [change-map.md](change-map.md) | Ruta ordenada de changes, generada a partir de [roadmap.md](roadmap.md#formato-del-change-map) | Para elegir el próximo change |
 | [adr/](adr/README.md) | Decisiones de arquitectura con contexto y alternativas | Cuando una tarea depende de una decisión transversal |
 | [reference/plan-inicial.md](reference/plan-inicial.md) | Plan original completo | Como insumo para specs y change map; **no es normativo** |
 
